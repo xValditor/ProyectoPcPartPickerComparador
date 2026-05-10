@@ -19,21 +19,23 @@
         <?php endif; ?>
     </div>
 
-<form method="POST" action="index.php?accion=cambiarColor">
-    <select name="color">
-        <option value="#ffffff" <?= ($colorFondo === '#ffffff') ? 'selected' : '' ?>>Blanco</option>
-        <option value="#cce5ff" <?= ($colorFondo === '#cce5ff') ? 'selected' : '' ?>>Azul</option>
-        <option value="#b3ffb3" <?= ($colorFondo === '#b3ffb3') ? 'selected' : '' ?>>Verde</option>
-        <option value="#ffb3b3" <?= ($colorFondo === '#ffb3b3') ? 'selected' : '' ?>>Rojo</option>
-        <option value="#ffecb3" <?= ($colorFondo === '#ffecb3') ? 'selected' : '' ?>>Amarillo</option>
-    </select>
-    <button type="submit">Cambiar color</button>
-</form>
+    <form method="POST" action="index.php?accion=cambiarColor">
+        <select name="color">
+            <option value="#ffffff" <?= ($colorFondo === '#ffffff') ? 'selected' : '' ?>>Blanco</option>
+            <option value="#cce5ff" <?= ($colorFondo === '#cce5ff') ? 'selected' : '' ?>>Azul</option>
+            <option value="#b3ffb3" <?= ($colorFondo === '#b3ffb3') ? 'selected' : '' ?>>Verde</option>
+            <option value="#ffb3b3" <?= ($colorFondo === '#ffb3b3') ? 'selected' : '' ?>>Rojo</option>
+            <option value="#ffecb3" <?= ($colorFondo === '#ffecb3') ? 'selected' : '' ?>>Amarillo</option>
+        </select>
+        <button type="submit">Cambiar color</button>
+    </form>
 
     <br>
     <?php if (isset($_SESSION['usuario_id'])): ?>
-        <a href="index.php?accion=crear">Agregar Componente</a><br><br>
+        <a href="index.php?accion=crear">Agregar Componente</a> |
     <?php endif; ?>
+    <a href="index.php?accion=comparar">Comparar precios</a>
+    <br><br>
 
     <table border="1" cellpadding="10">
         <tr>
@@ -44,6 +46,7 @@
             <th>Precio</th>
             <th>Consumo</th>
             <th>Año</th>
+            <th>Fecha registro</th>
             <th>Especificaciones</th>
             <?php if (isset($_SESSION['usuario_id'])): ?>
                 <th>Acciones</th>
@@ -59,6 +62,7 @@
             <td><?= $c->getPrecio() ?>€</td>
             <td><?= $c->getConsumo() ?>W</td>
             <td><?= $c->getAnioLanzamiento() ?></td>
+            <td><?= $c->getFechaRegistro() ?? '—' ?></td>
             <td>
                 <?php if ($c instanceof Procesador): ?>
                     <?= $c->getNucleos() ?> núcleos |

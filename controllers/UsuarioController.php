@@ -33,7 +33,7 @@ class UsuarioController {
                 $_SESSION['usuario_email'] = $usuario->getEmail();
                 $_SESSION['color_fondo'] = $usuario->getColorFondo();
                     setcookie('color_fondo', $usuario->getColorFondo(), time() + (30 * 24 * 60 * 60), '/');
-                
+                    
                 if ($recordar) {
                     $token = base64_encode($usuario->getEmail());
                     setcookie(

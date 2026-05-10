@@ -20,30 +20,24 @@ class ComponenteController {
             $precio = $_POST['precio'];
             $consumo = $_POST['consumo'];
             $anioLanzamiento = $_POST['anioLanzamiento'];
+            $fechaRegistro = $_POST['fechaRegistro'] ?: null;
 
             if ($tipo == 'Procesador') {
                 $componente = new Procesador(
                     $nombre, $fabricante, $precio, $consumo, $anioLanzamiento,
-                    $_POST['nucleos'],
-                    $_POST['frecuencia'],
-                    $_POST['socket']
+                    $_POST['nucleos'], $_POST['frecuencia'], $_POST['socket'], 0, $fechaRegistro
                 );
             } elseif ($tipo == 'TarjetaGrafica') {
                 $componente = new TarjetaGrafica(
                     $nombre, $fabricante, $precio, $consumo, $anioLanzamiento,
-                    $_POST['memoriaVRAM'],
-                    $_POST['velocidadMemoria'],
-                    $_POST['ensamblador']
+                    $_POST['memoriaVRAM'], $_POST['velocidadMemoria'], $_POST['ensamblador'], 0, $fechaRegistro
                 );
             } else {
                 $componente = new MemoriaRAM(
                     $nombre, $fabricante, $precio, $consumo, $anioLanzamiento,
-                    $_POST['capacidad'],
-                    $_POST['frecuenciaRam'],
-                    $_POST['tipoRam'],
-                    $_POST['latencia']
-    );
-}
+                    $_POST['capacidad'], $_POST['frecuenciaRam'], $_POST['tipoRam'], $_POST['latencia'], 0, $fechaRegistro
+                );
+            }
 
             $this->gestor->agregar($componente);
             header("Location: index.php");
@@ -63,6 +57,7 @@ class ComponenteController {
             $componente->setPrecio($_POST['precio']);
             $componente->setConsumo($_POST['consumo']);
             $componente->setAnioLanzamiento($_POST['anioLanzamiento']);
+            $componente->setFechaRegistro($_POST['fechaRegistro'] ?: null);
 
             if ($componente instanceof Procesador) {
                 $componente->setNucleos($_POST['nucleos']);
@@ -92,5 +87,36 @@ class ComponenteController {
         $this->gestor->eliminar($id);
         header("Location: index.php");
         exit;
+    }
+
+    public function comparar() {
+        $nombre   = $_GET['nombre'] ?? null;
+        $id1      = $_GET['id1'] ?? null;
+        $id2      = $_GET['id2'] ?? null;
+        $nombres  = $this->gestor->listarNombresDistintos();
+        $registros = $nombre ? $this->gestor->buscarPorNombre($nombre) : [];
+        $resultado = null;
+        $error     = null;
+
+        if ($id1 && $id2) {
+            if ($id1 === $id2) {
+                $error = "Debes seleccionar dos registros distintos.";
+            } else {
+                $c1 = $this->gestor->buscar($id1);
+                $c2 = $this->gestor->buscar($id2);
+                if ($c1 && $c2) {
+                    $diff = $c2->getPrecio() - $c1->getPrecio();
+                    $pct  = $c1->getPrecio() != 0 ? ($diff / $c1->getPrecio()) * 100 : 0;
+                    $resultado = [
+                        'c1'   => $c1,
+                        'c2'   => $c2,
+                        'diff' => $diff,
+                        'pct'  => $pct
+                    ];
+                }
+            }
+        }
+
+        include "views/comparar.php";
     }
 }

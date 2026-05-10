@@ -31,6 +31,9 @@
         Año de lanzamiento:<br>
         <input type="number" name="anioLanzamiento" required><br><br>
 
+        Fecha de registro:<br>
+        <input type="date" name="fechaRegistro"><br><br>
+
         <!-- Campos específicos Procesador -->
         Núcleos:<br>
         <input type="number" name="nucleos"><br><br>
@@ -61,8 +64,8 @@
         Tipo (DDR4/DDR5):<br>
         <input type="text" name="tipoRam"><br><br>
 
-Latencia (CL):<br>
-<input type="number" name="latencia"><br><br>
+        Latencia (CL):<br>
+        <input type="number" name="latencia"><br><br>
 
         <button type="submit">Guardar</button>
     </form>

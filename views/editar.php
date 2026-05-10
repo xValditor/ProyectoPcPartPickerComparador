@@ -25,6 +25,9 @@
         Año de lanzamiento:<br>
         <input type="number" name="anioLanzamiento" value="<?= $componente->getAnioLanzamiento() ?>" required><br><br>
 
+        Fecha de registro:<br>
+        <input type="date" name="fechaRegistro" value="<?= $componente->getFechaRegistro() ?>"><br><br>
+
         <?php if ($componente instanceof Procesador): ?>
             Núcleos:<br>
             <input type="number" name="nucleos" value="<?= $componente->getNucleos() ?>" required><br><br>
