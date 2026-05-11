@@ -1,5 +1,5 @@
 <footer>
-    <p>PcPartPicker <?= date('Y') ?> &mdash; Proyecto Intermodular DAW</p>
+    <p>PriceTracker <?= date('Y') ?> &mdash; Proyecto Intermodular DAW</p>
 </footer>
 
 </body>

@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PcPartPicker</title>
+    <title>PriceTracker</title>
     <link rel="stylesheet" href="/ProyectoPcPartPickerComparador/css/estilos.css">
 </head>
 <?php $colorFondo = $_COOKIE['color_fondo'] ?? '#f5f5f5'; ?>
 <body style="background-color: <?= $colorFondo ?>">
 
 <header>
-    <h1>PcPartPicker</h1>
+    <h1>PriceTracker</h1>
 
     <nav>
         <a href="/ProyectoPcPartPickerComparador/index.php">Inicio</a>
