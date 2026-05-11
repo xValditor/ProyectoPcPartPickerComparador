@@ -1,76 +1,69 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Añadir Componente</title>
-</head>
-<?php $colorFondo = $_COOKIE['color_fondo'] ?? '#ffffff'; ?>
-<body style="background-color: <?= $colorFondo ?>">
-    <h1>Añadir Componente</h1>
+<?php include 'header.php'; ?>
+
+<main>
+    <h2>Añadir Componente</h2>
 
     <form method="POST">
-        Tipo:<br>
+        <label>Tipo:</label>
         <select name="tipo" required>
             <option value="Procesador">Procesador</option>
             <option value="TarjetaGrafica">Tarjeta Gráfica</option>
             <option value="MemoriaRAM">Memoria RAM</option>
-        </select><br><br>
+        </select>
 
-        Nombre:<br>
-        <input type="text" name="nombre" required><br><br>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
 
-        Fabricante:<br>
-        <input type="text" name="fabricante" required><br><br>
+        <label>Fabricante:</label>
+        <input type="text" name="fabricante" required>
 
-        Precio (€):<br>
-        <input type="number" step="0.01" name="precio" required><br><br>
+        <label>Precio (€):</label>
+        <input type="number" step="0.01" name="precio" required>
 
-        Consumo (W):<br>
-        <input type="number" name="consumo" required><br><br>
+        <label>Consumo (W):</label>
+        <input type="number" name="consumo" required>
 
-        Año de lanzamiento:<br>
-        <input type="number" name="anioLanzamiento" required><br><br>
+        <label>Año de lanzamiento:</label>
+        <input type="number" name="anioLanzamiento" required>
 
-        Fecha de registro:<br>
-        <input type="date" name="fechaRegistro"><br><br>
+        <label>Fecha de registro:</label>
+        <input type="date" name="fechaRegistro">
 
-        <!-- Campos específicos Procesador -->
-        Núcleos:<br>
-        <input type="number" name="nucleos"><br><br>
+        <label>Núcleos (Procesador):</label>
+        <input type="number" name="nucleos">
 
-        Frecuencia (GHz):<br>
-        <input type="number" step="0.01" name="frecuencia"><br><br>
+        <label>Frecuencia GHz (Procesador):</label>
+        <input type="number" step="0.01" name="frecuencia">
 
-        Socket:<br>
-        <input type="text" name="socket"><br><br>
+        <label>Socket (Procesador):</label>
+        <input type="text" name="socket">
 
-        <!-- Campos específicos Tarjeta Gráfica -->
-        Memoria VRAM (GB):<br>
-        <input type="number" name="memoriaVRAM"><br><br>
+        <label>Memoria VRAM GB (GPU):</label>
+        <input type="number" name="memoriaVRAM">
 
-        Velocidad Memoria (MHz):<br>
-        <input type="number" name="velocidadMemoria"><br><br>
+        <label>Velocidad Memoria MHz (GPU):</label>
+        <input type="number" name="velocidadMemoria">
 
-        Ensamblador:<br>
-        <input type="text" name="ensamblador"><br><br>
+        <label>Ensamblador (GPU):</label>
+        <input type="text" name="ensamblador">
 
-        <!-- Campos específicos Memoria RAM -->
-        Capacidad (GB):<br>
-        <input type="number" name="capacidad"><br><br>
+        <label>Capacidad GB (RAM):</label>
+        <input type="number" name="capacidad">
 
-        Frecuencia RAM (MHz):<br>
-        <input type="number" name="frecuenciaRam"><br><br>
+        <label>Frecuencia MHz (RAM):</label>
+        <input type="number" name="frecuenciaRam">
 
-        Tipo (DDR4/DDR5):<br>
-        <input type="text" name="tipoRam"><br><br>
+        <label>Tipo DDR (RAM):</label>
+        <input type="text" name="tipoRam">
 
-        Latencia (CL):<br>
-        <input type="number" name="latencia"><br><br>
+        <label>Latencia CL (RAM):</label>
+        <input type="number" name="latencia">
 
         <button type="submit">Guardar</button>
     </form>
 
     <br>
-    <a href="index.php">Volver</a>
-</body>
-</html>
+    <a href="/ProyectoPcPartPickerComparador/index.php">← Volver</a>
+</main>
+
+<?php include 'footer.php'; ?>

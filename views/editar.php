@@ -1,72 +1,66 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Editar Componente</title>
-</head>
-<?php $colorFondo = $_COOKIE['color_fondo'] ?? '#ffffff'; ?>
-<body style="background-color: <?= $colorFondo ?>">
-    <h1>Editar Componente</h1>
+<?php include 'header.php'; ?>
+
+<main>
+    <h2>Editar Componente</h2>
 
     <form method="POST">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" value="<?= $componente->getNombre() ?>" required>
 
-        Nombre:<br>
-        <input type="text" name="nombre" value="<?= $componente->getNombre() ?>" required><br><br>
+        <label>Fabricante:</label>
+        <input type="text" name="fabricante" value="<?= $componente->getFabricante() ?>" required>
 
-        Fabricante:<br>
-        <input type="text" name="fabricante" value="<?= $componente->getFabricante() ?>" required><br><br>
+        <label>Precio (€):</label>
+        <input type="number" step="0.01" name="precio" value="<?= $componente->getPrecio() ?>" required>
 
-        Precio (€):<br>
-        <input type="number" step="0.01" name="precio" value="<?= $componente->getPrecio() ?>" required><br><br>
+        <label>Consumo (W):</label>
+        <input type="number" name="consumo" value="<?= $componente->getConsumo() ?>" required>
 
-        Consumo (W):<br>
-        <input type="number" name="consumo" value="<?= $componente->getConsumo() ?>" required><br><br>
+        <label>Año de lanzamiento:</label>
+        <input type="number" name="anioLanzamiento" value="<?= $componente->getAnioLanzamiento() ?>" required>
 
-        Año de lanzamiento:<br>
-        <input type="number" name="anioLanzamiento" value="<?= $componente->getAnioLanzamiento() ?>" required><br><br>
-
-        Fecha de registro:<br>
-        <input type="date" name="fechaRegistro" value="<?= $componente->getFechaRegistro() ?>"><br><br>
+        <label>Fecha de registro:</label>
+        <input type="date" name="fechaRegistro" value="<?= $componente->getFechaRegistro() ?>">
 
         <?php if ($componente instanceof Procesador): ?>
-            Núcleos:<br>
-            <input type="number" name="nucleos" value="<?= $componente->getNucleos() ?>" required><br><br>
+            <label>Núcleos:</label>
+            <input type="number" name="nucleos" value="<?= $componente->getNucleos() ?>" required>
 
-            Frecuencia (GHz):<br>
-            <input type="number" step="0.01" name="frecuencia" value="<?= $componente->getFrecuencia() ?>" required><br><br>
+            <label>Frecuencia (GHz):</label>
+            <input type="number" step="0.01" name="frecuencia" value="<?= $componente->getFrecuencia() ?>" required>
 
-            Socket:<br>
-            <input type="text" name="socket" value="<?= $componente->getSocket() ?>" required><br><br>
+            <label>Socket:</label>
+            <input type="text" name="socket" value="<?= $componente->getSocket() ?>" required>
 
         <?php elseif ($componente instanceof TarjetaGrafica): ?>
-            Memoria VRAM (GB):<br>
-            <input type="number" name="memoriaVRAM" value="<?= $componente->getMemoriaVRAM() ?>" required><br><br>
+            <label>Memoria VRAM (GB):</label>
+            <input type="number" name="memoriaVRAM" value="<?= $componente->getMemoriaVRAM() ?>" required>
 
-            Velocidad Memoria (MHz):<br>
-            <input type="number" name="velocidadMemoria" value="<?= $componente->getVelocidadMemoria() ?>" required><br><br>
+            <label>Velocidad Memoria (MHz):</label>
+            <input type="number" name="velocidadMemoria" value="<?= $componente->getVelocidadMemoria() ?>" required>
 
-            Ensamblador:<br>
-            <input type="text" name="ensamblador" value="<?= $componente->getEnsamblador() ?>" required><br><br>
+            <label>Ensamblador:</label>
+            <input type="text" name="ensamblador" value="<?= $componente->getEnsamblador() ?>" required>
 
         <?php else: ?>
-            Capacidad (GB):<br>
-            <input type="number" name="capacidad" value="<?= $componente->getCapacidad() ?>" required><br><br>
+            <label>Capacidad (GB):</label>
+            <input type="number" name="capacidad" value="<?= $componente->getCapacidad() ?>" required>
 
-            Frecuencia (MHz):<br>
-            <input type="number" name="frecuenciaRam" value="<?= $componente->getFrecuencia() ?>" required><br><br>
+            <label>Frecuencia (MHz):</label>
+            <input type="number" name="frecuenciaRam" value="<?= $componente->getFrecuencia() ?>" required>
 
-            Tipo (DDR4/DDR5):<br>
-            <input type="text" name="tipoRam" value="<?= $componente->getTipo() ?>" required><br><br>
+            <label>Tipo (DDR4/DDR5):</label>
+            <input type="text" name="tipoRam" value="<?= $componente->getTipo() ?>" required>
 
-            Latencia (CL):<br>
-            <input type="number" name="latencia" value="<?= $componente->getLatencia() ?>" required><br><br>
-
+            <label>Latencia (CL):</label>
+            <input type="number" name="latencia" value="<?= $componente->getLatencia() ?>" required>
         <?php endif; ?>
 
         <button type="submit">Guardar cambios</button>
     </form>
 
     <br>
-    <a href="index.php">Volver al listado</a>
-</body>
-</html>
+    <a href="/ProyectoPcPartPickerComparador/index.php">← Volver al listado</a>
+</main>
+
+<?php include 'footer.php'; ?>

@@ -1,31 +1,29 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Iniciar Sesión</title>
-</head>
-<?php $colorFondo = $_COOKIE['color_fondo'] ?? '#ffffff'; ?>
-<body style="background-color: <?= $colorFondo ?>">
-    <h1>Iniciar Sesión</h1>
+<?php include 'header.php'; ?>
+
+<main>
+    <h2>Iniciar Sesión</h2>
 
     <?php if (isset($error)): ?>
-        <p style="color: red;"><b><?= $error ?></b></p>
+        <p class="error"><?= $error ?></p>
     <?php endif; ?>
 
     <form method="POST">
-        Email:<br>
-        <input type="email" name="email" required><br><br>
+        <label>Email:</label>
+        <input type="email" name="email" required>
 
-        Contraseña:<br>
-        <input type="password" name="password" required minlength="6"><br><br>
+        <label>Contraseña:</label>
+        <input type="password" name="password" required minlength="6">
 
-        <input type="checkbox" name="recordarme"> Recordarme en este equipo<br><br>
+        <label>
+            <input type="checkbox" name="recordarme"> Recordarme en este equipo
+        </label>
 
         <button type="submit">Entrar</button>
     </form>
 
     <br>
-    <p>¿No tienes cuenta? <a href="index.php?accion=alta">Regístrate aquí</a></p>
-    <a href="index.php">Volver al inicio</a>
-</body>
-</html>
+    <p>¿No tienes cuenta? <a href="/ProyectoPcPartPickerComparador/index.php?accion=alta">Regístrate aquí</a></p>
+    <a href="/ProyectoPcPartPickerComparador/index.php">← Volver al inicio</a>
+</main>
+
+<?php include 'footer.php'; ?>
